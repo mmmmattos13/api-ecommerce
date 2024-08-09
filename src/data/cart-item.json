@@ -1,0 +1,26 @@
+[
+  {
+    "productId": 1,
+    "productName": "Produto A",
+    "quantity": 2,
+    "price": 100,
+    "currency": "BRL",
+    "isInStock": true
+  },
+  {
+    "productId": 2,
+    "productName": "Produto B",
+    "quantity": 1,
+    "price": 200,
+    "currency": "BRL",
+    "isInStock": false
+  },
+  {
+    "productId": 3,
+    "productName": "Produto C",
+    "quantity": 3,
+    "price": 150,
+    "currency": "BRL",
+    "isInStock": true
+  }
+]
