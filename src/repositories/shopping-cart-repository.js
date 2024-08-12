@@ -4,14 +4,15 @@ const CartItem = require('../database/models').CartItem;
 // Função para encontrar todos os itens do carrinho de compras
 const findAllShoppingItem = async () => {
     const shoppingCart = await ShoppingCart.findOne({
-        include: [{ model: CartItem, as: 'items' }]
+        include: [{ model: CartItem, as: 'CartItems' }]
     });
-    return shoppingCart || null;
+    return shoppingCart;
 };
+
 
 // Função para encontrar um item do carrinho de compras pelo ID
 const findShoppingItemById = async (id) => {
-    const cartItem = await CartItem.findOne({ where: { productId: id } });
+    const cartItem = await CartItem.findOne({ where: { id: id } });
     return cartItem || undefined;
 };
 
@@ -23,16 +24,17 @@ const insertShoppingItem = async (newItem) => {
         shoppingCart = await ShoppingCart.create({ totalQuantity: 0, totalPrice: 0, currency: 'BRL' });
     }
 
-    const createdItem = await CartItem.create({ ...newItem, shoppingCartId: shoppingCart.id });
+    //const createdItem = await CartItem.create({ ...newItem, shoppingCartId: shoppingCart.id });
     
-    shoppingCart.totalQuantity += createdItem.quantity;
-    shoppingCart.totalPrice += createdItem.price * createdItem.quantity;
+    //shoppingCart.totalQuantity += createdItem.quantity;
+    //shoppingCart.totalPrice += createdItem.price * createdItem.quantity;
+    
     await shoppingCart.save();
 };
 
 // Função para modificar um item do carrinho de compras pelo ID
 const findModifyShoppingItemById = async (id, item) => {
-    const cartItem = await CartItem.findOne({ where: { productId: id } });
+    const cartItem = await CartItem.findOne({ where: { id: id } });
     
     if (!cartItem) {
         return {};

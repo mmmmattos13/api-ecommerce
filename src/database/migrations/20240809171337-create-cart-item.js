@@ -26,6 +26,13 @@ module.exports = {
       },
       imageUrl: {
         type: Sequelize.STRING
+      },
+      ShoppingCartId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'ShoppingCart',
+          key: 'id',
+        }
       }
     });
   },

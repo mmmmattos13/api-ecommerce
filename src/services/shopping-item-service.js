@@ -29,13 +29,17 @@ const getShoppingCartByIdService = async (id) => {
     return response;
 };
 
-// Função para criar um novo carrinho de compras
 const createShoppingCartService = async (shoppingCart) => {
     let response = null;
 
-    if (shoppingCart && shoppingCart.items.length > 0) {
-        // Exemplo simples para inserir o primeiro item
-        await ShoppingCartRepository.insertShoppingItem(shoppingCart.items[0]);
+    
+    if (shoppingCart && Array.isArray(shoppingCart.items)) {
+        for (const item of shoppingCart.items) {
+            await ShoppingCartRepository.insertShoppingItem(item);
+        }
+        response = await HttpResponse.created();
+    } else if (shoppingCart && typeof shoppingCart === 'object') {
+        await ShoppingCartRepository.insertShoppingItem(shoppingCart);
         response = await HttpResponse.created();
     } else {
         response = await HttpResponse.badRequest();
@@ -43,6 +47,7 @@ const createShoppingCartService = async (shoppingCart) => {
 
     return response;
 };
+
 
 // Função para atualizar um item do carrinho de compras pelo ID
 const updateShoppingCartService = async (id, items) => {

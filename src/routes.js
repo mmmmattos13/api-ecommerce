@@ -15,6 +15,7 @@ router.get("/carrinho", ShoppingCartController.getShoppingCart);
 router.get("/carrinho/:id", ShoppingCartController.getShoppingCartById);
 router.delete("/carrinho/:id", ShoppingCartController.deleteShoppingCart);
 router.put("/carrinho/:id", ShoppingCartController.putShoppingCart);
+
 router.post("/carrinho", ShoppingCartController.postShoppingCart);
 
 module.exports = router;
