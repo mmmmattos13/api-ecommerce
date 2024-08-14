@@ -2,10 +2,10 @@
   "name": "api-ecommerce",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {   
-    "start:dev": "tsx --env-file=.env src/server.js",
-    "start:watch": "tsx watch --env-file=.env src/server.js",
-    "start:dist": "npm run dist && node dist/src/index.js"
+  "scripts": {
+    "start:dev": "node src/server.js",
+    "start:watch": "nodemon src/server.js",
+    "start:dist": "node dist/src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "nodemon": "^3.1.4",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
   },
