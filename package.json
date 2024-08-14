@@ -2,8 +2,7 @@
   "name": "api-ecommerce",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "dist": "tsup src",
+  "scripts": {   
     "start:dev": "tsx --env-file=.env src/server.js",
     "start:watch": "tsx watch --env-file=.env src/server.js",
     "start:dist": "npm run dist && node dist/src/index.js"
