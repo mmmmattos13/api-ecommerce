@@ -17,8 +17,5 @@
     "nodemon": "^3.1.4",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
-  },
-  "devDependencies": {
-    "tsup": "^8.2.4"
   }
 }
